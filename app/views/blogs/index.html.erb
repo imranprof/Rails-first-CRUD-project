@@ -1,0 +1,40 @@
+
+
+<table class = "table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+  <tr>
+    <th>Blog No</th>
+    <th>Blog Title</th>
+    <th>Status</th>
+    <th>Edit</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.id %></td>
+      <td><p><%=blog.title %> | <%= link_to "Show Blog", friend_blog_path(@friend,blog)%></p>
+      </td>
+
+      <td>
+        <%if blog.status == 0 %>
+          <p>Draft</p>
+        <%else%>
+        <p>Publish</p>
+          <%end %>
+
+      </td>
+      <td><p><%= link_to "Edit This",  edit_friend_blog_path(@friend,blog) %></p></td>
+
+
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to 'Add new Blog', new_friend_blog_path, class: "btn btn-secondary" %>
+
+

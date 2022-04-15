@@ -1,0 +1,35 @@
+
+
+<table class = "table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Twitter</th>
+      <th>Info</th>
+      <th>Blogs</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @friends.each do |friend| %>
+    <tr>
+      <td><%= friend.first_name %></td>
+      <td><%= friend.last_name %></td>
+      <td><%= friend.email %></td>
+      <td><%= friend.twitter %></td>
+
+      <td><p><%= link_to "Show User info", friend %></p></td>
+      <td><p><%= link_to "Show User Blogs",  friend_blogs_path(friend) %></p></td>
+ </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to 'Add new users With blog', newforms_friends_path, class: "btn btn-secondary" %>
+
+
+
