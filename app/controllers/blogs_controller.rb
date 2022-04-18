@@ -44,6 +44,7 @@ class BlogsController < ApplicationController
 
   end
 
+
   def update
     user = user_exist params[:friend_id]
     blog_id = Blog.find params[:id]
@@ -61,6 +62,7 @@ class BlogsController < ApplicationController
 
 
   def show
+
     @blog = Blog.find params[:id]
 
   end

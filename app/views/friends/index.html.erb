@@ -21,15 +21,16 @@
       <td><%= friend.email %></td>
       <td><%= friend.twitter %></td>
 
-      <td><p><%= link_to "Show User info", friend %></p></td>
-      <td><p><%= link_to "Show User Blogs",  friend_blogs_path(friend) %></p></td>
+      <td><%= link_to "Show User info", friend, class: "btn btn-outline-info" %></td>
+      <td><%= link_to "Show User Blogs",  friend_blogs_path(friend), class: "btn btn-outline-info"%></td>
+
  </tr>
   <% end %>
   </tbody>
 
 </table>
-
-<%= link_to 'Add new users With blog', newforms_friends_path, class: "btn btn-secondary" %>
+</br>
+<%= link_to 'Add new users With blog', newforms_friends_path, class: "btn btn-outline-success" %>
 
 
 

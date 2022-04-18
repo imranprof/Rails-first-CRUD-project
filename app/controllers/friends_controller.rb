@@ -4,6 +4,7 @@ class FriendsController < ApplicationController
   # GET /friends or /friends.json
   def index
     @friends = Friend.all
+
   end
 
   # GET /friends/1 or /friends/1.json
@@ -25,36 +26,38 @@ class FriendsController < ApplicationController
 
   # GET /friends/1/edit
   def edit
+    @friend.blogs.build
+
   end
 
   # POST /friends or /friends.json
 
   def create
     @friend = Friend.new(friend_params)
-
-    respond_to do |format|
       if @friend.save
-
         #new code here
+          blogs = params[:blogs]
+          if blogs ==nil
+            redirect_to friends_path, notice: "User create without blogs........"
+            #return
+          else
 
-        blogs = params.require(:blogs)
-          blogs.each do
-          |blog|
-            @friend.blogs.create(title: blog[1][:title], content: blog[1][:content], status: 0)
+              blogs = params.require(:blogs)
+              #raise blogs.inspect
+              blogs.each do
+              |blog|
+                @friend.blogs.create(title: blog[1][:title], content: blog[1][:content], status: 0)
+              end
+              redirect_to friend_blogs_path(@friend), notice: "User add with blogs.."
+
           end
 
+        else
+          render :new1, notice: "User create Successfully without blogs.."
+        end
 
-        #new code end
 
-        format.html { redirect_to friend_url(@friend), notice: "User Add Successfully.." }
-        format.json { render :show, status: :created, location: @friend }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-      end
     end
-  end
-
 
   #my create method
 
