@@ -12,14 +12,15 @@
   </thead>
 
   <tbody>
-  <% @blogs.each do |blog| %>
+  <% @friend.blogs.each do |blog| %>
     <tr>
       <td><%= blog.id %></td>
       <td><p><%=blog.title %> | <%= link_to "Show Blog", friend_blog_path(@friend,blog)%></p>
       </td>
 
       <td>
-        <%if blog.status == 0 %>
+        <%if blog.status == 0 || blog.status ==nil %>
+
           <p>Draft</p>
         <%else%>
         <p>Publish</p>

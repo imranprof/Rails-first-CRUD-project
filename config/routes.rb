@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'error', to: 'blogs#error', as: 'error'
   get  'friend/:friend_id/blog/:id/publish', to: 'blogs#publish', as: 'blog_publish'
-  get 'friend/new1', to: 'friends#new1', as: 'newforms_friends'
+  get 'friend/new', to: 'friends#new', as: 'newforms_friends'
 
 
   #get 'home/index'

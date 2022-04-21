@@ -1,5 +1,5 @@
+<%= form_for @friend do |form| %>
 
-<%= form_with(model: friend) do |form| %>
 
   <div class="field form-group">
     <%= form.label :first_name %>
@@ -21,16 +21,16 @@
     <%= form.text_field :twitter, class:"form-control" %>
   </div>
 
-
-
-  <div>
-    <%= form.submit class: 'btn btn-secondary'%>
+  <div id="blogs">
+    <%= form.fields_for :blogs do |f| %>
+      <%= render 'blog_fields', f: f %>
+    <% end %>
+    <div class="links" >
+      <%= link_to_add_association 'Add blog', form, :blogs, class: 'btn btn-primary'%>
+    </div>
   </div>
-  </br>
+
+  <%= form.submit 'Save', class: "btn btn-success"%>
+
 
 <% end %>
-
-
-
-
-

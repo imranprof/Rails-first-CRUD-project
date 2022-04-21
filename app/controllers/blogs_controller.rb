@@ -69,9 +69,9 @@ class BlogsController < ApplicationController
 
   def destroy
 
-      blog = Blog.find params[:id]
-      if blog
-        blog.destroy
+    @blog = Blog.find params[:id]
+      if @blog
+        @blog.destroy
         redirect_to friend_blogs_path, notice: "Blog Deleted successfully..."
       else
         redirect_to friend_blogs_path, notice: "Blog is not found to delete"

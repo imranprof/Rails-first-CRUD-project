@@ -1,8 +1,10 @@
 <h2>Update this blogs </h2>
+
+
 <%= render "blogs/form" %>
 </br>
-<%= button_to "delete",friend_blog_path(), :method => :delete, class:"btn btn-danger" %>
+<%= button_to "delete",friend_blog_path(), :method => :delete, class:"btn btn-danger"%>
 
-<% if @blog.status == 0 %>
+<% if @blog.status == 0 || @blog.status == nil%>
   <%= link_to 'Publish the Blog', blog_publish_path, class: 'd-block btn btn-secondary' %>
 <% end %>
